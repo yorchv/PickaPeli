@@ -3,15 +3,15 @@
     RewriteBase /
 
     RewriteCond %{REQUEST_URI} ^system.*
-    RewriteRule ^(.*)$ PickaPeli/index.php?/$1 [L]
+    RewriteRule ^(.*)$ retobb/PickaPeli/index.php?/$1 [L]
     
     RewriteCond %{REQUEST_URI} ^application.*
-    RewriteRule ^(.*)$ PickaPeli/index.php?/$1 [L]
+    RewriteRule ^(.*)$ retobb/PickaPeli/index.php?/$1 [L]
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ PickaPeli/index.php?/$1 [L]
+    RewriteRule ^(.*)$ retobb/PickaPeli/index.php?/$1 [L]
 	
     RewriteCond $1 !^(index\.php|assets|editor|css|js|scripts|images|img|media|xml|user_guide|static|robots\.txt|favicon\.ico)
-    RewriteRule ^(.*)$ PickaPeli/index.php/$1 [L,QSA]  
+    RewriteRule ^(.*)$ retobb/PickaPeli/index.php/$1 [L,QSA]  
 </IfModule>  
