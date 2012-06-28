@@ -1,32 +1,25 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller
-{
-	function __construct()
+class Welcome extends CI_Controller {
+
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -  
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in 
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see http://codeigniter.com/user_guide/general/urls.html
+	 */
+	public function index()
 	{
-		parent::__construct();
-
-		$this->load->helper('url');
-		//$this->load->library('tank_auth');
-	}
-
-	function index()
-	{
-		$d['movies'] = $this->_get_movies();
-		$this->load->view('welcome', $d);
-	}
-	
-	function _get_movies(){
-		$url = 'http://cine.colombia.com/teatros-salas/i3/bogota-andino';
-		$ch = curl_init();
-		$timeout = 5;
-		curl_setopt($ch,CURLOPT_URL,$url);
-		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-		curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
-		$data = curl_exec($ch);
-		curl_close($ch);
-		return $data;
-		
+		$this->load->view('welcome_message');
 	}
 }
 
