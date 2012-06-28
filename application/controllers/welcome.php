@@ -12,7 +12,21 @@ class Welcome extends CI_Controller
 
 	function index()
 	{
-		$this->load->view('welcome');
+		$d['movies'] = $this->_get_movies();
+		$this->load->view('welcome', $d);
+	}
+	
+	function _get_movies(){
+		$url = 'http://cine.colombia.com/teatros-salas/i3/bogota-andino';
+		$ch = curl_init();
+		$timeout = 5;
+		curl_setopt($ch,CURLOPT_URL,$url);
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+		curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
+		$data = curl_exec($ch);
+		curl_close($ch);
+		return $data;
+		
 	}
 }
 

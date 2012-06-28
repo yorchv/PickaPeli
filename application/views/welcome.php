@@ -1,5 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head></head>
-<body></body>
+<body>
+
+
+<?php echo $movies;?>
+
+</body>
 </html>
