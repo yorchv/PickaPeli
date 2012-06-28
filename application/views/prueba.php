@@ -4,6 +4,6 @@
 
 </head>
 <body>
-<?php echo $info;?>
+Probando
 </body>
 </html>

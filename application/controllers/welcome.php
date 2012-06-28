@@ -19,7 +19,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$response = http_get("http://cine.colombia.com/pelicula/i3752c0p0/un-metodo-peligroso-a-dangerous-method?id=3752&idc=0&p=0", array("timeout"=>1), $d['info']);
+		$this->load->view('welcome_message', $d);
 	}
 }
 
