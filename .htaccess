@@ -5,12 +5,22 @@ Options -MultiViews
 DirectoryIndex index.php
 
 <IfModule mod_rewrite.c>
-  RewriteEngine on
-  RewriteBase retobb/PickaPeli/
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d 
-  RewriteRule ^(.*)$ index.php/$1 [L,QSA]
-</IfModule>
+    RewriteEngine On
+    RewriteBase /
+
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ retobb/PickaPeli/index.php?/$1 [L]
+    
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ retobb/PickaPeli/index.php?/$1 [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ retobb/PickaPeli/index.php?/$1 [L]
+	
+    RewriteCond $1 !^(index\.php|assets|editor|css|js|scripts|images|img|media|xml|user_guide|static|robots\.txt|favicon\.ico)
+    RewriteRule ^(.*)$ retobb/PickaPeli/index.php/$1 [L,QSA]  
+</IfModule>  
 
 <IfModule !mod_rewrite.c>
   ErrorDocument 404 index.php
